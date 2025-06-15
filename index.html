@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ShopNow Pro</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1 class="logo">ShopNow<span class="dot">.</span></h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+      <div class="cart" id="cart-btn">
+        🛒 <span id="cart-count">0</span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>Unbeatable Deals</h2>
+    <p>Get the latest gadgets with up to <span>60% OFF</span>!</p>
+    <a href="#products" class="btn-primary">Shop Now</a>
+  </div>
+  <div class="hero-image">
+    <img src="images/hero-product.png" alt="Featured product" />
+  </div>
+</section>
+
+<main>
+  <section id="products" class="product-grid">
+    <!-- Product Cards -->
+    <div class="product-card">
+      <img src="images/product1.jpg" alt="Wireless Headphones" />
+      <p class="price">₹3,000</p>
+      <h3>Wireless Headphones</h3>
+      <button onclick="addToCart('Wireless Headphones',3000)" class="btn-secondary">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/product2.jpg" alt="Smart Watch" />
+      <h3>Smart Watch</h3>
+      <p class="price">₹2,000</p>
+      <button onclick="addToCart('Smart Watch',2000)" class="btn-secondary">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/product3.jpg" alt="Bluetooth Speaker" />
+      <h3>Bluetooth Speaker</h3>
+      <p class="price">₹5,000</p>
+      <button onclick="addToCart('Bluetooth Speaker',5000)" class="btn-secondary">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/product4.jpg" alt="Fitness Band" />
+      <h3>Fitness Band</h3>
+      <p class="price">₹2,000</p>
+      <button onclick="addToCart('Fitness Band',2000)" class="btn-secondary">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/product5.jpg" alt="DSLR Camera" />
+      <h3>DSLR Camera</h3>
+      <p class="price">₹20,000</p>
+      <button onclick="addToCart('DSLR Camera',20000)" class="btn-secondary">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/product6.jpg" alt="Laptop Bag" />
+      <h3>Laptop Bag</h3>
+      <p class="price">₹1,000</p>
+      <button onclick="addToCart('Laptop Bag',1000)" class="btn-secondary">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/product7.jpg" alt="Gaming Mouse" />
+      <h3>Gaming Mouse</h3>
+      <p class="price">₹800</p>
+      <button onclick="addToCart('Gaming Mouse',800)" class="btn-secondary">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/product8.jpg" alt="Mechanical Keyboard" />
+      <h3>Mechanical Keyboard</h3>
+      <p class="price">₹1,000</p>
+      <button onclick="addToCart('Mechanical Keyboard',1000)" class="btn-secondary">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/product9.jpg" alt="Noise Cancelling Earbuds" />
+      <h3>Noise Cancelling Earbuds</h3>
+      <p class="price">₹5,000</p>
+      <button onclick="addToCart('Noise Cancelling Earbuds',5000)" class="btn-secondary">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/product10.jpg" alt="Smartphone Gimbal" />
+      <h3>Smartphone Gimbal</h3>
+      <p class="price">₹700</p>
+      <button onclick="addToCart('Smartphone Gimbal',700)" class="btn-secondary">Add to Cart</button>
+    </div>
+  </section>
+</main>
+
+<!-- Cart Modal -->
+<div id="cart-modal" class="cart-modal hidden">
+  <div class="cart-content">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <button id="close-cart" class="btn-primary">Close</button>
+    <a href="checkout.html" class="btn-primary" style="margin-top: 15px; display: inline-block;">Go to Checkout</a>
+
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="footer-container">
+    <h2>Contact Us</h2>
+    <p><strong>Contact Person:</strong> Nikhilesh Kumar Gubba</p>
+    <p><strong>Phone:</strong> +44 7911 123456</p>
+    <p><strong>Email:</strong> <a href="mailto:nikhileshkumargubba@gmail.com">nikhileshkumargubba@gmail.com</a></p>
+    <p><strong>Address:</strong> 221B Baker Street, London, UK</p>
+    <p>© 2025 ShopNow. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
