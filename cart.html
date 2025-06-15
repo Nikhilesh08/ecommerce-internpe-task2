@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ShopEase</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart 🛒</a>
+    </nav>
+  </header>
+
+  <main class="cart-container">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <h3>Total: ₹<span id="total-amount">0</span></h3>
+    <button onclick="checkout()">Checkout</button>
+  </main>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const cartItemsEl = document.getElementById("cart-items");
+    const totalAmountEl = document.getElementById("total-amount");
+    let total = 0;
+
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `₹{item.name} - ₹{item.price}`;
+      cartItemsEl.appendChild(li);
+      total += item.price;
+    });
+
+    totalAmountEl.textContent = total;
+
+    function checkout() {
+      alert("Thank you for your purchase!");
+      localStorage.removeItem("cart");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

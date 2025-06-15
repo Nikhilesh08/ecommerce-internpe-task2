@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout - ShopNow Pro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1 class="logo">ShopNow<span class="dot">.</span></h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="checkout.html" class="active">Checkout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="checkout-container">
+  <h2>Checkout</h2>
+
+  <section class="cart-summary">
+    <h3>Your Cart</h3>
+    <ul id="checkout-items"></ul>
+    <p class="total-price">Total: ₹<span id="total-amount">0.00</span></p>
+  </section>
+
+  <section class="checkout-form-section">
+    <h3>Shipping Details</h3>
+    <form id="checkout-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required />
+
+      <label for="address">Shipping Address</label>
+      <textarea id="address" rows="3" required></textarea>
+
+      <button type="submit" class="btn-primary">Place Order</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <h2>Contact Us</h2>
+    <p><strong>Contact Person:</strong> Nikhilesh Kumar Gubba</p>
+    <p><strong>Phone:</strong> +44 7911 123456</p>
+    <p><strong>Email:</strong> <a href="mailto:nikhilesh@example.com">nikhilesh@example.com</a></p>
+    <p><strong>Address:</strong> 221B Baker Street, London, UK</p>
+    <p>© 2025 ShopNow. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Load cart from localStorage
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  const checkoutItems = document.getElementById('checkout-items');
+  const totalAmount = document.getElementById('total-amount');
+  const form = document.getElementById('checkout-form');
+
+  function renderCart() {
+    checkoutItems.innerHTML = '';
+    let total = 0;
+    if(cart.length === 0) {
+      checkoutItems.innerHTML = '<li>Your cart is empty.</li>';
+      totalAmount.textContent = '0.00';
+      return;
+    }
+    cart.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}`;
+      checkoutItems.appendChild(li);
+      total += item.price * item.qty;
+    });
+    totalAmount.textContent = total.toFixed(2);
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if(cart.length === 0) {
+      alert('Your cart is empty! Please add items before checkout.');
+      return;
+    }
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const address = document.getElementById('address').value.trim();
+
+    if (!name || !email || !address) {
+      alert('Please fill all required fields.');
+      return;
+    }
+
+    // Simulate order submission
+    alert(`Thank you, ${name}! Your order totaling $${totalAmount.textContent} has been placed.`);
+
+    // Clear cart and localStorage
+    localStorage.removeItem('cart');
+
+    // Redirect to home page
+    window.location.href = 'index.html';
+  });
+
+  renderCart();
+</script>
+
+<style>
+  /* Checkout page specific styles */
+  .checkout-container {
+    max-width: 900px;
+    margin: 60px auto 80px;
+    padding: 0 30px;
+  }
+
+  .checkout-container h2 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 40px;
+    color: #667eea;
+    text-align: center;
+  }
+
+  .cart-summary, .checkout-form-section {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+  }
+
+  .cart-summary h3, .checkout-form-section h3 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 25px;
+  }
+
+  #checkout-items {
+    list-style: none;
+    padding-left: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+  #checkout-items li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .total-price {
+    font-weight: 900;
+    font-size: 20px;
+    text-align: right;
+    color: #667eea;
+  }
+
+  form label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    color: #333;
+  }
+
+  form input, form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1.5px solid #ccc;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  form input:focus, form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102,126,234,0.5);
+  }
+
+  form button {
+    margin-top: 25px;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-weight: 700;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  form button:hover {
+    background: #5a6cd6;
+  }
+
+  @media (max-width: 600px) {
+    .checkout-container {
+      padding: 0 15px;
+    }
+  }
+</style>
+
+</body>
+</html>
